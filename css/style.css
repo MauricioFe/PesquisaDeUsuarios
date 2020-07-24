@@ -30,8 +30,8 @@ label {
 }
 
 #inputFilter {
-    width: 100%;
-    height: 40px;
+    width: 92%;
+    height: 60px;
     outline: none;
     border: none;
     border-radius: 5px 0 0 5px;
@@ -42,7 +42,8 @@ label {
 }
 
 button {
-    height: 40px;
+    width: 8%;
+    height: 60px;
     border-radius: 0 5px 5px 0;
     outline: none;
     border: none;
@@ -83,22 +84,33 @@ button {
     font-size: 2em;
 }
 
+.users {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .card-user {
     background: linear-gradient(45deg, rgba(26, 26, 26, 0.7), #292929);
     box-shadow: 0 2px 8px 0 rgba(92, 92, 92, 0.2);
     transition: 0.3s;
     text-align: center;
-    width: 100%;
+    width: 77%;
     padding: 30px 20px;
     border-radius: 10px;
     margin: 2em 0 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+}
+
+.card-user:hover {
+    transform: scale(1.1);
 }
 
 .user-img {
     border-radius: 50%;
+    margin-right: 20px;
 }
 
 .flex-row {
@@ -124,7 +136,44 @@ button {
     margin-bottom: 20px;
 }
 
+.card-statistics:hover {
+    transform: scale(1.1);
+}
+
 .img-statistics {
     width: 32px;
     margin-bottom: 5px;
+}
+
+@media (max-width:720px) {
+    .result {
+        flex-direction: column;
+    }
+    .card-results {
+        width: 100%;
+    }
+    #inputFilter {
+        width: 85%;
+    }
+    #buttonFilter {
+        width: 15%;
+    }
+}
+
+@media (max-width: 414px) {
+    .flex-row {
+        flex-direction: column;
+    }
+    .card-statistics {
+        width: 100%;
+    }
+    .card-user {
+        width: 100%;
+    }
+    #inputFilter {
+        width: 80%;
+    }
+    #buttonFilter {
+        width: 20%;
+    }
 }

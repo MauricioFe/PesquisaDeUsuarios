@@ -18,10 +18,9 @@ window.addEventListener('load', () => {
 
 
 async function fecthUsers() {
-    //const response = await fetch('https://randomuser.me/api/?seed=javascript&results=100&nat=BR&noinfo');
-    //const data = await response.json();
-
-    usersList = people.results.map(user => {
+    const response = await fetch('https://randomuser.me/api/?seed=javascript&results=100&nat=BR&noinfo');
+    const data = await response.json();
+    usersList = data.results.map(user => {
         const { name, picture, dob, gender } = user;
         return {
             name: name.first + " " + name.last,
@@ -29,7 +28,16 @@ async function fecthUsers() {
             dob: dob.age,
             gender: gender
         }
-    })
+    });
+    // usersList = people.results.map(user => {
+    //     const { name, picture, dob, gender } = user;
+    //     return {
+    //         name: name.first + " " + name.last,
+    //         picture: picture.medium,
+    //         dob: dob.age,
+    //         gender: gender
+    //     }
+    // })
 }
 
 function initializeComponents() {
