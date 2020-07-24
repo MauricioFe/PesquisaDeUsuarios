@@ -14,14 +14,37 @@
     <div class="container-form">
         <!-- <label for="inputFilter">Busca</label> -->
         <input type="text" placeholder="Buscar" id="inputFilter">
-        <button><img class="search-icon" src="./img/icon-pesquisar.svg" alt=""></button>
+        <button id="buttonFilter"><img class="search-icon" src="./img/icon-pesquisar.svg" alt=""></button>
     </div>
     <div class="result">
         <div class="card-results" id="foundUsers">
             <h2><span id="countUsers">0</span> usuários(s) encontrado(s)</h2>
+            <div id="usersList"></div>
         </div>
         <div class="card-results" id="statistics">
             <h2>Estatísticas</h2>
+            <div class="flex-row">
+                <div class="card-statistics">
+                    <img class="img-statistics" src="img/male.svg" alt="masculino">
+                    <h6>Sexo masculino</h6>
+                    <span id="countMale">0</span>
+                </div>
+                <div class="card-statistics">
+                    <img class="img-statistics" src="img/female.svg" alt="feminino">
+                    <h6>Sexo feminino</h6>
+                    <span id="countFemale">0</span>
+                </div>
+                <div class="card-statistics">
+                    <img class="img-statistics" src="img/plus.svg" alt="soma">
+                    <h6>Soma das idades</h6>
+                    <span id="sumAge">0</span>
+                </div>
+                <div class="card-statistics">
+                    <img class="img-statistics" src="img/calculator.svg" alt="média">
+                    <h6>Média das idades</h6>
+                    <span id="averageAge">0</span>
+                </div>
+            </div>
         </div>
     </div>
     <script src="./js/script.js"></script>
