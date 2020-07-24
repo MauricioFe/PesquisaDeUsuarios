@@ -18,15 +18,16 @@ window.addEventListener('load', () => {
 
 
 async function fecthUsers() {
-    const response = await fetch('https://randomuser.me/api/?seed=javascript&results=100&nat=BR&noinfo');
-    const data = await response.json();
+    //const response = await fetch('https://randomuser.me/api/?seed=javascript&results=100&nat=BR&noinfo');
+    //const data = await response.json();
 
-    usersList = data.results.map(user => {
-        const { name, picture, dob } = user;
+    usersList = people.results.map(user => {
+        const { name, picture, dob, gender } = user;
         return {
             name: name.first + " " + name.last,
             picture: picture.medium,
-            dob: dob.age
+            dob: dob.age,
+            gender: gender
         }
     })
 }
@@ -45,7 +46,7 @@ function initializeComponents() {
 
 function render() {
     let usersHTML = "<div class='users'>";
-    usersList.forEach(user => {
+    usersListFiltered.forEach(user => {
         const { name, picture, dob } = user;
         const userHTML =
             `
@@ -69,15 +70,27 @@ function configFilter() {
 }
 
 function handlerFilterButtonClick() {
-    console.log('teste')
     const filter = inputFilter.value.toLowerCase().trim();
     usersListFiltered = usersList.filter((item) => {
-        return item.name.toLowerCase.includes(filter);
+        return item.name.toLowerCase().includes(filter);
     });
     render();
     renderSummary();
 }
 
-function handlerFilterKeyUp() {}
+function handlerFilterKeyUp({ key }) {
+    if (inputFilter.value === "") {
+        clearInput();
+    }
+
+    if (key !== 'Enter') {
+        return;
+    }
+    handlerFilterButtonClick();
+}
+
+function clearInput() {
+    divUsersList.innerHTML = "";
+}
 
 function renderSummary() {}
