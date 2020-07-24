@@ -38,7 +38,7 @@ function initializeComponents() {
     countUsers = document.querySelector('#countUsers');
     divUsersList = document.querySelector('#usersList');
     countMale = document.querySelector('#countMale');
-    countFemale = document.querySelector('countFemale');
+    countFemale = document.querySelector('#countFemale');
     sumAge = document.querySelector('#sumAge');
     averageAge = document.querySelector('#averageAge');
     fecthUsers();
@@ -62,6 +62,7 @@ function render() {
         usersHTML += userHTML;
     });
     divUsersList.innerHTML = usersHTML;
+    countUsers.textContent = usersListFiltered.length;
 }
 
 function configFilter() {
@@ -91,6 +92,45 @@ function handlerFilterKeyUp({ key }) {
 
 function clearInput() {
     divUsersList.innerHTML = "";
+    countUsers.textContent = 0;
+    countFemale.textContent = 0;
+    countMale.textContent = 0;
+    sumAge.textContent = 0;
+    averageAge.textContent = 0;
 }
 
-function renderSummary() {}
+function renderSummary() {
+    filterMale();
+    filterFemale();
+    sumAges();
+    averageAges();
+}
+
+function filterMale() {
+    const usersMale = usersListFiltered.filter(user => {
+        return user.gender === 'male'
+    })
+    countMale.textContent = usersMale.length;
+}
+
+function filterFemale() {
+    const usersFemale = usersListFiltered.filter(user => {
+        return user.gender === 'female'
+    });
+    countFemale.textContent = usersFemale.length;
+}
+
+function sumAges() {
+    const sum = usersListFiltered.reduce((accumulator, current) => {
+        return accumulator + current.dob;
+    }, 0);
+
+    sumAge.textContent = sum;
+}
+
+function averageAges() {
+    const average = usersListFiltered.reduce((accumulator, current) => {
+        return (accumulator + current.dob);
+    }, 0);
+    averageAge.textContent = parseFloat((average / usersListFiltered.length).toFixed(2));
+}
